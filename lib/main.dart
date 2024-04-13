@@ -7,7 +7,6 @@ import 'package:note_offline/views/notes_view.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModalAdapter());
-
   await Hive.openBox(kNotesBox);
   runApp(const NotesApp());
 }
