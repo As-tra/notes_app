@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_offline/views/widgets/custom_serach_icon.dart';
+import 'package:note_offline/widgets/custom_serach_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
