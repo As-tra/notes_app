@@ -4,7 +4,6 @@ sealed class NotesState {}
 
 final class NotesInitial extends NotesState {}
 
-final class ShowNoteLoading extends NotesState {}
 
 final class ShowNoteSucess extends NotesState {
   final List<NoteModal> notes;
