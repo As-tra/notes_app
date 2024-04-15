@@ -43,7 +43,7 @@ class NoteItem extends StatelessWidget {
                   title,
                   style: const TextStyle(
                     color: Colors.black,
-                    fontSize: 26,
+                    fontSize: 24,
                   ),
                 ),
               ),
@@ -51,7 +51,7 @@ class NoteItem extends StatelessWidget {
                 onPressed: () {},
                 icon: const FaIcon(
                   FontAwesomeIcons.trash,
-                  size: 26,
+                  size: 24,
                   color: Colors.black,
                 ),
               ),
@@ -59,7 +59,7 @@ class NoteItem extends StatelessWidget {
                 text,
                 style: const TextStyle(
                   color: Colors.black45,
-                  fontSize: 18,
+                  fontSize: 16,
                 ),
               ),
             ),
@@ -70,6 +70,7 @@ class NoteItem extends StatelessWidget {
                   date,
                   style: const TextStyle(
                     color: Colors.black38,
+                    fontSize: 12,
                   ),
                 ),
               ],
