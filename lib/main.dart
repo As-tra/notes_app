@@ -12,7 +12,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(NoteModalAdapter());
 
-  await Hive.openBox(kNotesBox);
+  await Hive.openBox<NoteModal>(kNotesBox);
   runApp(const NotesApp());
 }
 

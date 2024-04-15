@@ -51,29 +51,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
             onTap: () {
               if (formeKey.currentState!.validate()) {
                 formeKey.currentState!.save();
+                var note = NoteModal(
+                  title: title!,
+                  content: subTitle!,
+                  date: DateTime.now().toString(),
+                  color: Colors.blue.value,
+                );
 
-                // List months = [
-                //   'jan',
-                //   'feb',
-                //   'mar',
-                //   'apr',
-                //   'may',
-                //   'jun',
-                //   'jul',
-                //   'aug',
-                //   'sep',
-                //   'oct',
-                //   'nov',
-                //   'dec'
-                // ];
-                // BlocProvider.of<AddNoteCubit>(context).addNote(
-                //   NoteModal(
-                //     title: title!,
-                //     content: subTitle!,
-                //     date: '${months[DateTime.now().month - 1]}',
-                //     color: 1,
-                //   ),
-                // );
+                BlocProvider.of<AddNoteCubit>(context).addNote(note);
               } else {
                 setState(() {
                   autovalidateMode = AutovalidateMode.always;
