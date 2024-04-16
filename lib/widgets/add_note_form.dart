@@ -54,10 +54,17 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 onTap: () {
                   if (formeKey.currentState!.validate()) {
                     formeKey.currentState!.save();
+                    String month = BlocProvider.of<AddNoteCubit>(context)
+                        .months[DateTime.now().month - 1];
+                    // or just use package
+                    // var currentDate = DateTime.now();
+                    // var formattedCurrentDate =
+                    //     DateFormat.yMd().format(currentDate);
                     var note = NoteModal(
                       title: title!,
                       content: subTitle!,
-                      date: DateTime.now().toString(),
+                      date:
+                          '$month,${DateTime.now().day},${DateTime.now().year}',
                       color: Colors.green.value,
                     );
 
