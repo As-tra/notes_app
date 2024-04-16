@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_offline/cubits/notesCubit/notes_cubit.dart';
+import 'package:note_offline/models/note_model.dart';
 import 'package:note_offline/widgets/custom_note_item.dart';
 
 class NotesListView extends StatelessWidget {
@@ -6,15 +9,18 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return NoteItem(
-          title: 'Flutter tips',
-          text: 'Build your Career with Tharwat Samy',
-          date: 'May 21,2022',
-          color: Colors.orange.shade200,
+    return BlocBuilder<NotesCubit, NotesState>(
+      builder: (context, state) {
+        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+        List<NoteModal> notes = BlocProvider.of<NotesCubit>(context).notes;
+        return ListView.builder(
+          padding: EdgeInsets.zero,
+          itemCount: notes.length,
+          itemBuilder: (context, index) {
+            return NoteItem(
+              note: notes[index],
+            );
+          },
         );
       },
     );
