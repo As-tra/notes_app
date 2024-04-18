@@ -64,10 +64,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       title: title!,
                       content: subTitle!,
                       date:
-                          '$month,${DateTime.now().day},${DateTime.now().year}',
+                          '$month,${DateTime.now().day} ${DateTime.now().year}',
                       color: Colors.green.value,
                     );
-
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
                     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                   } else {
