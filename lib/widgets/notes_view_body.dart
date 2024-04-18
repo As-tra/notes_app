@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_offline/cubits/notesCubit/notes_cubit.dart';
 import 'package:note_offline/widgets/custom_app_bar.dart';
+import 'package:note_offline/widgets/empty_list_view.dart';
 import 'package:note_offline/widgets/notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
@@ -7,21 +10,25 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 24,
         ),
         child: Column(
           children: [
-            CustomAppBar(
+            const CustomAppBar(
               title: 'Notes',
               icon: Icons.search,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Expanded(child: NotesListView()),
+            Expanded(
+              child: BlocProvider.of<NotesCubit>(context).notes.isEmpty
+                  ? const EmptyListView()
+                  : const NotesListView(),
+            ),
           ],
         ),
       ),
