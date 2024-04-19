@@ -4,10 +4,12 @@ import 'package:note_offline/widgets/custom_serach_icon.dart';
 class CustomAppBar extends StatelessWidget {
   final String title;
   final IconData icon;
+  final void Function()? onPressed;
   const CustomAppBar({
     super.key,
     required this.title,
     required this.icon,
+    this.onPressed,
   });
 
   @override
@@ -21,7 +23,10 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        CustomAppBarIcon(icon: icon),
+        CustomAppBarIcon(
+          icon: icon,
+          onPressed: onPressed,
+        ),
       ],
     );
   }

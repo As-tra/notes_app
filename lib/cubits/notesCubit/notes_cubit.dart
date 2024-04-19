@@ -18,4 +18,10 @@ class NotesCubit extends Cubit<NotesState> {
       emit(NotesSuccess());
     }
   }
+
+  updateNotes() {
+    var notesBox = Hive.box<NoteModal>(kNotesBox);
+    notes = notesBox.values.toList();
+    emit(NotesSuccess());
+  }
 }
