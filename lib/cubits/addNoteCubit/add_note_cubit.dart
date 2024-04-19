@@ -21,6 +21,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     'nov',
     'dec'
   ];
+  int colorIndex = 0;
 
   Future addNote(NoteModal note) async {
     emit(AddNoteLoading());

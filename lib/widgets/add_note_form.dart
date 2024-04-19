@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_offline/constants.dart';
 import 'package:note_offline/cubits/addNoteCubit/add_note_cubit.dart';
 import 'package:note_offline/cubits/notesCubit/notes_cubit.dart';
 import 'package:note_offline/models/note_model.dart';
@@ -61,16 +62,15 @@ class _AddNoteFormState extends State<AddNoteForm> {
                     formeKey.currentState!.save();
                     String month = BlocProvider.of<AddNoteCubit>(context)
                         .months[DateTime.now().month - 1];
-                    // or just use package
-                    // var currentDate = DateTime.now();
-                    // var formattedCurrentDate =
-                    //     DateFormat.yMd().format(currentDate);
+
                     var note = NoteModal(
                       title: title!,
                       content: subTitle!,
                       date:
                           '$month,${DateTime.now().day} ${DateTime.now().year}',
-                      color: Colors.green.value,
+                      color: kNoteColors[
+                              BlocProvider.of<AddNoteCubit>(context).colorIndex]
+                          .value,
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(note);
                     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
@@ -88,5 +88,3 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
-
-
