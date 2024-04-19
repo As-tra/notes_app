@@ -22,7 +22,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     'dec'
   ];
 
-  void addNote(NoteModal note) async {
+  Future addNote(NoteModal note) async {
     emit(AddNoteLoading());
     try {
       var notesBox = Hive.box<NoteModal>(kNotesBox);
