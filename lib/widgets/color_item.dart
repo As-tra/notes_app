@@ -4,17 +4,25 @@ class ColorItem extends StatelessWidget {
   const ColorItem({
     super.key,
     required this.color,
+    this.isActive = false,
   });
   final Color color;
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(right: 10),
-      child: CircleAvatar(
-        radius: 38,
-        backgroundColor: color,
-      ),
-    );
+    return isActive
+        ? CircleAvatar(
+            radius: 38,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              radius: 34,
+              backgroundColor: color,
+            ),
+          )
+        : CircleAvatar(
+            radius: 38,
+            backgroundColor: color,
+          );
   }
 }
